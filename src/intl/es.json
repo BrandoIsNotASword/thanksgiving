@@ -1,28 +1,9 @@
 {
-  "title": "Wedding Promo",
-  "description": "Celebra tu boda en Ana y José Tulum",
-  "logoAlt": "Ana y José Promoción de Boda",
-  "h1": "¡CÁSATE EN MAY, JUN, SEPT U OCT Y OBTÉN UNA TARIFA ESPECIAL!",
-  "successMessage": {
-    "main": "¡Gracias por tu solicitud!",
-    "sub": "Nos contactaremos contigo lo antes posible."
-  },
-  "formWedding": {
-    "required": "Requerido",
-    "invalidEmail": "Email inválido",
-    "couplesName": "Nombre de la pareja",
-    "country": "País",
-    "phoneNumber": "Celular",
-    "email": "Email",
-    "firstDate": "Primera fecha",
-    "secondDate": "Segunda fecha",
-    "guests": "Número de invitados",
-    "typeOfCeremony": "Tipo de ceremonia",
-    "descriptionSecondDate": "En caso de que la primera fecha no esté disponible.",
-    "descriptionTypeOfCeremony": "Católica, judía, musulmana, etc.",
-    "button": "Empieza a planificar",
-    "terms": "Se aplican restricciones, las tarifas están sujetas a cambios de última hora."
-  },
+  "date": "MAYO & ABRIL",
+  "title": "Oferta de primavera",
+  "description": "¡OBTÉN UNA TARIFA ESPECIAL CON MASAJE EN PAREJAS DE 30-MIN INCLUÍDOS!",
+  "cta": "Reserva ahora",
+  "terms": "Se pueden aplicar términos y condiciones. Sujeto a disponibilidad.",
   "nextSlide": "Siguiente",
   "prevSlide": "Anterior"
 }

@@ -83,7 +83,7 @@ const Layout = ({ children }) => {
       </Wrapper>
       <Gallery />
       <Footer>
-        <p>© Hotel HipHotel. All Rights Reserved.</p>
+        <p>© Hotel HipHotel Tulum. All Rights Reserved.</p>
         <FooterColumn>
           <a
             href="https://www.hiphoteltulum.com/reservation-policy/"

@@ -1,4 +1,5 @@
 import React from 'react'
+import { useIntl } from 'gatsby-plugin-intl'
 import styled from 'styled-components'
 
 import Layout from '../components/layout'
@@ -38,7 +39,7 @@ const LogoPromo = styled.img`
 const CTAWrapper = styled.div`
   display: flex;
   width: 100%;
-  height: 200px;
+  height: 220px;
   align-items: center;
   background-color: rgba(45, 154, 146, 0.85);
   color: white;
@@ -47,7 +48,7 @@ const CTAWrapper = styled.div`
 
   @media (min-width: ${MIN_WIDTH}) {
     border-radius: 25px 0 0 25px;
-    height: 250px;
+    height: 260px;
     margin-left: 25px;
     margin-right: -50px;
   }
@@ -60,13 +61,14 @@ const CTAWrapper = styled.div`
 
 const CTAContent = styled.div`
   display: flex;
+  align-items: center;
   flex-direction: column;
   box-sizing: border-box;
   margin: 0 auto;
+  width: 350px;
 
   @media (min-width: ${MIN_WIDTH}) {
     margin: 0;
-    width: 350px;
     padding-left: 50px;
   }
 
@@ -81,11 +83,12 @@ const P = styled.p`
 `
 
 const Button = styled.button`
+  width: 100%;
   border: none;
   color: white;
   background-color: #205575;
   border-radius: 100px;
-  height: 40px;
+  height: 50px;
   font-weight: bold;
   font-size: 1.5em;
   margin-top: 15px;
@@ -99,23 +102,33 @@ const Terms = styled.span`
   margin-top: 5px;
 `
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Sptring Deal" />
-    <Wrapper>
-      <LogoPromo src={logoPromo} />
-      <CTAWrapper>
-        <CTAContent>
-          <P style={{ fontSize: '2.5rem', opacity: '0.85' }}>MAY & APRIL</P>
-          <P style={{ fontSize: '1.25rem', fontWeight: 'bold', marginTop: '5px' }}>
-            GET A SPECIAL RATE <br /> WITH A 30-MIN COUPLES <br /> MASSAGE INCLUDED!
-          </P>
-          <Button>Book now</Button>
-          <Terms>Terms and conditions may apply. Subject to availability.</Terms>
-        </CTAContent>
-      </CTAWrapper>
-    </Wrapper>
-  </Layout>
-)
+function IndexPage() {
+  const intl = useIntl().formatMessage
+
+  return (
+    <Layout>
+      <SEO title={intl({ id: 'title' })} />
+      <Wrapper>
+        <LogoPromo src={logoPromo} />
+        <CTAWrapper>
+          <CTAContent>
+            <P style={{ fontSize: '2.5rem', opacity: '0.85' }}>{intl({ id: 'date' })}</P>
+            <P
+              style={{
+                fontSize: '1.25rem',
+                fontWeight: 'bold',
+                marginTop: '5px',
+              }}
+            >
+              {intl({ id: 'description' })}
+            </P>
+            <Button>{intl({ id: 'cta' })}</Button>
+            <Terms>{intl({ id: 'terms' })}</Terms>
+          </CTAContent>
+        </CTAWrapper>
+      </Wrapper>
+    </Layout>
+  )
+}
 
 export default IndexPage
