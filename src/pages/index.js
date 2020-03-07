@@ -1,6 +1,7 @@
-import React from 'react'
-import { useIntl } from 'gatsby-plugin-intl'
+import React, { useState } from 'react'
+import { useIntl, IntlContextConsumer } from 'gatsby-plugin-intl'
 import styled from 'styled-components'
+import { MdClose } from 'react-icons/md'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
@@ -102,8 +103,56 @@ const Terms = styled.span`
   margin-top: 5px;
 `
 
+const ModalIframe = styled.div`
+  position: fixed;
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+const WrapperIframe = styled.div`
+  width: 100%;
+  height: 100%;
+  max-width: 1024px;
+  margin-top: -50px;
+  position: relative;
+`
+
+const Iframe = styled.iframe`
+  width: 100%;
+  height: 100%;
+  border: none;
+`
+
+const CloseModal = styled.div`
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-left: auto;
+  color: white;
+`
+
 function IndexPage() {
+  const [bookOpen, setBookOpen] = useState(false)
   const intl = useIntl().formatMessage
+
+  const onOpenModal = () => {
+    document.body.style.overflow = 'hidden'
+    setBookOpen(true)
+  }
+
+  const onCloseModal = () => {
+    document.body.style.overflow = 'initial'
+    setBookOpen(false)
+  }
 
   return (
     <Layout>
@@ -122,11 +171,25 @@ function IndexPage() {
             >
               {intl({ id: 'description' })}
             </P>
-            <Button>{intl({ id: 'cta' })}</Button>
+            <Button onClick={onOpenModal}>{intl({ id: 'cta' })}</Button>
             <Terms>{intl({ id: 'terms' })}</Terms>
           </CTAContent>
         </CTAWrapper>
       </Wrapper>
+      {bookOpen && (
+        <ModalIframe>
+          <CloseModal onClick={onCloseModal}>
+            <MdClose style={{ fontSize: '1.75rem' }} />
+          </CloseModal>
+          <WrapperIframe>
+            <IntlContextConsumer>
+              {({ language: currentLocale }) => (
+                <Iframe src={`https://rbe.zaviaerp.com/?hotel=230&lng=${currentLocale}`} />
+              )}
+            </IntlContextConsumer>
+          </WrapperIframe>
+        </ModalIframe>
+      )}
     </Layout>
   )
 }
