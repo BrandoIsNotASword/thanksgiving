@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useIntl, IntlContextConsumer } from 'gatsby-plugin-intl'
 import styled from 'styled-components'
-import { MdClose } from 'react-icons/md'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
@@ -118,8 +117,7 @@ const ModalIframe = styled.div`
 const WrapperIframe = styled.div`
   width: 100%;
   height: 100%;
-  max-width: 1024px;
-  margin-top: -50px;
+  max-width: 1240px;
   position: relative;
 `
 
@@ -129,20 +127,14 @@ const Iframe = styled.iframe`
   border: none;
 `
 
-const CloseModal = styled.div`
-  height: 50px;
-  width: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  margin-left: auto;
-  color: white;
-`
-
 function IndexPage() {
   const [bookOpen, setBookOpen] = useState(false)
   const intl = useIntl().formatMessage
+
+  useEffect(() => {
+    window.addEventListener('message', onMessage, false)
+    return () => window.removeEventListener('message', onMessage, false)
+  })
 
   const onOpenModal = () => {
     document.body.style.overflow = 'hidden'
@@ -152,6 +144,10 @@ function IndexPage() {
   const onCloseModal = () => {
     document.body.style.overflow = 'initial'
     setBookOpen(false)
+  }
+
+  const onMessage = (e) => {
+    if (e.data.func === 'zbeCloseBooking') onCloseModal()
   }
 
   return (
@@ -178,9 +174,6 @@ function IndexPage() {
       </Wrapper>
       {bookOpen && (
         <ModalIframe>
-          <CloseModal onClick={onCloseModal}>
-            <MdClose style={{ fontSize: '1.75rem' }} />
-          </CloseModal>
           <WrapperIframe>
             <IntlContextConsumer>
               {({ language: currentLocale }) => (
