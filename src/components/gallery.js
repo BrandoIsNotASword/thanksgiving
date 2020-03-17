@@ -55,10 +55,10 @@ function Gallery() {
   const data = useStaticQuery(graphql`
     fragment fluidAndFixedImage on File {
       childImageSharp {
-        fluid(maxWidth: 600) {
+        fluid(maxWidth: 500, quality: 60) {
           ...GatsbyImageSharpFluid
         }
-        fixed(width: 720) {
+        fixed(width: 1024, quality: 90) {
           ...GatsbyImageSharpFixed
         }
       }

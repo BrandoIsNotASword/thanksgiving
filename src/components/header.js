@@ -50,7 +50,7 @@ const LinkLang = styled.a`
 function Header() {
   return (
     <Wrapper>
-      <LinkLogo href="https://anayjose.com/">
+      <LinkLogo href="https://hiphoteltulum.com/">
         <img style={{ height: '100%' }} src={logo} alt="Ana y José Tulum" />
       </LinkLogo>
       <LangOptions>
