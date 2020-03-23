@@ -27,20 +27,23 @@ const Wrapper = styled.div`
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  position: relative;
 `
 
 const Content = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  max-width: 1440px;
-  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.25);
+
+  @media (min-width: 1440px) {
+    padding: 0 15%;
+  }
 `
 
 const Main = styled.main`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   box-sizing: border-box;
   width: 100%;
   flex: 1;

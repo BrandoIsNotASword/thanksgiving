@@ -13,12 +13,19 @@ const MIN_WIDTH_MD = '1440px'
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   box-sizing: border-box;
   flex-direction: column;
+  padding-left: 15px;
+  padding-right: 15px;
+  max-width: 480px;
+  margin: 0 auto;
 
   @media (min-width: ${MIN_WIDTH}) {
-    flex-direction: row;
+    margin-left: auto;
+    margin-right: 0;
+    max-width: 100%;
+    width: 50%;
     padding-left: 50px;
     padding-right: 50px;
   }
@@ -26,37 +33,9 @@ const Wrapper = styled.div`
 
 const LogoPromo = styled.img`
   height: auto;
-  width: 80%;
-  max-width: 300px;
-  box-sizing: border-box;
-
-  @media (min-width: ${MIN_WIDTH}) {
-    max-width: 100%;
-    width: 50%;
-  }
-`
-
-const CTAWrapper = styled.div`
-  display: flex;
   width: 100%;
-  height: 220px;
-  align-items: center;
-  background-color: rgba(45, 154, 146, 0.85);
-  color: white;
-  text-align: center;
+  max-width: 500px;
   box-sizing: border-box;
-
-  @media (min-width: ${MIN_WIDTH}) {
-    border-radius: 25px 0 0 25px;
-    height: 260px;
-    margin-left: 25px;
-    margin-right: -50px;
-  }
-
-  @media (min-width: ${MIN_WIDTH_MD}) {
-    border-radius: 25px;
-    margin-right: 0;
-  }
 `
 
 const CTAContent = styled.div`
@@ -64,17 +43,11 @@ const CTAContent = styled.div`
   align-items: center;
   flex-direction: column;
   box-sizing: border-box;
-  margin: 0 auto;
-  width: 350px;
+  color: white;
+  text-align: center;
 
   @media (min-width: ${MIN_WIDTH}) {
-    margin: 0;
-    padding-left: 50px;
-  }
-
-  @media (min-width: ${MIN_WIDTH_MD}) {
-    padding-left: 0;
-    margin: 0 auto;
+    width: 350px;
   }
 `
 
@@ -86,7 +59,7 @@ const Button = styled.button`
   width: 100%;
   border: none;
   color: white;
-  background-color: #205575;
+  background-color: #e98f19;
   border-radius: 100px;
   height: 50px;
   font-weight: bold;
@@ -155,22 +128,20 @@ function IndexPage() {
       <SEO title={intl({ id: 'title' })} />
       <Wrapper>
         <LogoPromo src={logoPromo} />
-        <CTAWrapper>
-          <CTAContent>
-            <P style={{ fontSize: '2.5rem', opacity: '0.85' }}>{intl({ id: 'date' })}</P>
-            <P
-              style={{
-                fontSize: '1.25rem',
-                fontWeight: 'bold',
-                marginTop: '5px',
-              }}
-            >
-              {intl({ id: 'description' })}
-            </P>
-            <Button onClick={onOpenModal}>{intl({ id: 'cta' })}</Button>
-            <Terms>{intl({ id: 'terms' })}</Terms>
-          </CTAContent>
-        </CTAWrapper>
+        <CTAContent>
+          <P style={{ fontSize: '1.75rem', opacity: '0.85' }}>{intl({ id: 'date' })}</P>
+          <P
+            style={{
+              fontSize: '1.25rem',
+              fontWeight: 'bold',
+              marginTop: '5px',
+            }}
+          >
+            {intl({ id: 'description' })}
+          </P>
+          <Button onClick={onOpenModal}>{intl({ id: 'cta' })}</Button>
+          <Terms>{intl({ id: 'terms' })}</Terms>
+        </CTAContent>
       </Wrapper>
       {bookOpen && (
         <ModalIframe>
