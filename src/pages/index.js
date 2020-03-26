@@ -149,7 +149,7 @@ function IndexPage() {
             <IntlContextConsumer>
               {({ language: currentLocale }) => (
                 <Iframe
-                  src={`https://rbe.zaviaerp.com/?hotel=230&zbe_arrival=2020-03-01&zbe_departure=2020-03-02&lng=${currentLocale}`}
+                  src={`https://rbe.zaviaerp.com/?hotel=232&zbe_arrival=2020-03-01&zbe_departure=2020-03-02&lng=${currentLocale}`}
                 />
               )}
             </IntlContextConsumer>

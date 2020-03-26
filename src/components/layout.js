@@ -6,7 +6,7 @@ import Gallery from './gallery'
 
 import 'normalize.css'
 
-import bg from '../images/bg-hiphotel.jpg'
+import bg from '../images/bg-anayjose.jpg'
 
 const MIN_WIDTH = '768px'
 
@@ -34,7 +34,7 @@ const Content = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: rgba(0, 0, 0, 0.15);
 
   @media (min-width: 1440px) {
     padding: 0 15%;
@@ -86,20 +86,16 @@ const Layout = ({ children }) => {
       </Wrapper>
       <Gallery />
       <Footer>
-        <p>© Hotel HipHotel Tulum. All Rights Reserved.</p>
+        <p>© Hotel Ana y José. All Rights Reserved.</p>
         <FooterColumn>
           <a
-            href="https://www.hiphoteltulum.com/reservation-policy/"
+            href="https://anayjose.com/reservation-policy"
             target="_blank"
             rel="noopener noreferrer"
           >
             Reservation policy
           </a>
-          <a
-            href="https://www.hiphoteltulum.com/privacy-policy/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://anayjose.com/privacy-policy" target="_blank" rel="noopener noreferrer">
             Privacy policy
           </a>
         </FooterColumn>
