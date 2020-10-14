@@ -5,37 +5,106 @@ import styled from 'styled-components'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 
-import logoPromo from '../images/logo-promo.png'
+import logoPromo from '../images/frase-desk.png'
+import logoPromoMobile from '../images/frase-mobile.png'
+import logoForbes from '../images/logo-forbes.png'
 
 const MIN_WIDTH = '768px'
-const MIN_WIDTH_MD = '1440px'
 
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   box-sizing: border-box;
   flex-direction: column;
+  flex: 1;
   padding-left: 15px;
   padding-right: 15px;
-  max-width: 480px;
   margin: 0 auto;
-
-  @media (min-width: ${MIN_WIDTH}) {
-    margin-left: auto;
-    margin-right: 0;
-    max-width: 100%;
-    width: 50%;
-    padding-left: 50px;
-    padding-right: 50px;
-  }
+  height: 100%;
 `
 
 const LogoPromo = styled.img`
   height: auto;
   width: 100%;
-  max-width: 500px;
+  max-width: 700px;
   box-sizing: border-box;
+  display: none;
+  opacity: 0.75;
+
+  @media (min-width: 1024px) {
+    display: initial;
+  }
+`
+
+const LogoPromoMobile = styled.img`
+  height: auto;
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
+  opacity: 0.75;
+  margin-top: 15px;
+
+  @media (min-width: 1024px) {
+    margin-top: 0px;
+    display: none;
+  }
+`
+
+const LogoForbes = styled.img`
+  height: auto;
+  width: 100%;
+  max-width: 150px;
+  box-sizing: border-box;
+  margin-top: 16px;
+  opacity: 0.75;
+
+  @media (min-width: 1024px) {
+    max-width: 240px;
+  }
+`
+
+const Hr = styled.div`
+  width: 100%;
+  height: 2px;
+  opacity: 0.35;
+  background-color: white;
+  display: block;
+  margin: 15px 0;
+
+  @media (min-width: 1024px) {
+    margin: 32px 0;
+  }
+`
+
+const CTAWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+
+    & > :first-child {
+      margin-right: 32px;
+    }
+
+    & > :last-child {
+      margin-left: 32px;
+    }
+  }
+`
+
+const CTAHr = styled.div`
+  height: 2px;
+  opacity: 0.35;
+  background-color: white;
+  margin: 15px 0;
+
+  @media (min-width: 1024px) {
+    height: auto;
+    width: 2px;
+    margin: 0%;
+  }
 `
 
 const CTAContent = styled.div`
@@ -72,7 +141,8 @@ const Terms = styled.span`
   margin: 0;
   opacity: 0.85;
   font-size: 0.8em;
-  margin-top: 5px;
+  margin: 10px 0;
+  text-align: center;
 `
 
 const ModalIframe = styled.div`
@@ -82,6 +152,7 @@ const ModalIframe = styled.div`
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   top: 0;
+  left: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -101,6 +172,9 @@ const Iframe = styled.iframe`
 `
 
 function IndexPage() {
+  const [promo, setPromo] = useState('')
+  const [checkIn, setCheckIn] = useState(null)
+  const [checkOut, setCheckOut] = useState(null)
   const [bookOpen, setBookOpen] = useState(false)
   const intl = useIntl().formatMessage
 
@@ -109,8 +183,11 @@ function IndexPage() {
     return () => window.removeEventListener('message', onMessage, false)
   })
 
-  const onOpenModal = () => {
+  const onOpenModal = (promo, checkIn, checkOut) => {
     document.body.style.overflow = 'hidden'
+    setPromo(promo)
+    setCheckIn(checkIn)
+    setCheckOut(checkOut)
     setBookOpen(true)
   }
 
@@ -125,23 +202,62 @@ function IndexPage() {
 
   return (
     <Layout>
-      <SEO title={intl({ id: 'title' })} />
+      <SEO title="Promoción Forbes" />
       <Wrapper>
         <LogoPromo src={logoPromo} />
-        <CTAContent>
-          <P style={{ fontSize: '1.75rem', opacity: '0.85' }}>{intl({ id: 'date' })}</P>
-          <P
-            style={{
-              fontSize: '1.25rem',
-              fontWeight: 'bold',
-              marginTop: '5px',
-            }}
-          >
-            {intl({ id: 'description' })}
-          </P>
-          <Button onClick={onOpenModal}>{intl({ id: 'cta' })}</Button>
-          <Terms>{intl({ id: 'terms' })}</Terms>
-        </CTAContent>
+        <LogoPromoMobile src={logoPromoMobile} />
+        <LogoForbes src={logoForbes} />
+        <Hr />
+        <CTAWrapper>
+          <CTAContent>
+            <P
+              style={{ fontSize: '6rem', fontWeight: 'bold', opacity: '0.85', lineHeight: '80px' }}
+            >
+              40%
+            </P>
+            <P style={{ fontSize: '1.5rem', fontWeight: 'bold', opacity: '0.85' }}>DE DESCUENTO</P>
+            <P style={{ fontSize: '1.25rem', opacity: '0.85', marginTop: '10px' }}>
+              VIAJANDO DEL 1 DE SEPTIEMBRE AL 20 DE DICIEMBRE
+            </P>
+            <Button onClick={() => onOpenModal('promotion/FORBES40/', '2020-09-01')}>
+              {intl({ id: 'cta' })}
+            </Button>
+            <P
+              style={{
+                fontSize: '0.85rem',
+                marginTop: '5px',
+              }}
+            >
+              EXCEPTO: DEL 26 AL 30 DE NOVIEMBRE
+            </P>
+          </CTAContent>
+          <CTAHr />
+          <CTAContent>
+            <P
+              style={{ fontSize: '6rem', fontWeight: 'bold', opacity: '0.85', lineHeight: '80px' }}
+            >
+              15%
+            </P>
+            <P style={{ fontSize: '1.5rem', fontWeight: 'bold', opacity: '0.85' }}>DE DESCUENTO</P>
+            <P style={{ fontSize: '1.25rem', opacity: '0.85', marginTop: '10px' }}>
+              VIAJANDO DEL 16 DE ENERO AL 1 DE SEPTIEMBRE
+            </P>
+            <Button onClick={() => onOpenModal('promotion/FORBES2/', '2021-01-16')}>
+              {intl({ id: 'cta' })}
+            </Button>
+            <P
+              style={{
+                fontSize: '0.85rem',
+                marginTop: '5px',
+              }}
+            >
+              EXCEPTO: DEL 26 MARZO AL 11 DE ABRIL
+            </P>
+          </CTAContent>
+        </CTAWrapper>
+        <Terms style={{ color: 'white', marginTop: '15px' }}>
+          No reembolsable. No aplica con otras promociones. No aplica para grupos o bodas.
+        </Terms>
       </Wrapper>
       {bookOpen && (
         <ModalIframe>
@@ -149,7 +265,7 @@ function IndexPage() {
             <IntlContextConsumer>
               {({ language: currentLocale }) => (
                 <Iframe
-                  src={`https://rbe.zaviaerp.com/promotion/SUMMER-SPECIAL-2020/?hotel=232&arrival=2020-06-01&departure=2020-06-04&lng=${currentLocale}`}
+                  src={`https://rbe.zaviaerp.com/${promo}?hotel=232&arrival=${checkIn}&departure=${checkOut}&lng=${currentLocale}`}
                 />
               )}
             </IntlContextConsumer>

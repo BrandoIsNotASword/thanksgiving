@@ -34,7 +34,7 @@ const Content = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: rgba(0, 0, 0, 0.5);
 
   @media (min-width: 1440px) {
     padding: 0 15%;

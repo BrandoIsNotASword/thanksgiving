@@ -3,14 +3,14 @@ import styled from 'styled-components'
 import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
-import ModalCarousel from './ModalCarousel'
+import ModalCarousel from './modalCarousel'
 
 const MIN_WIDTH = '680px'
 const MIN_WIDTH_GALLERY = '1024px'
 
 const Wrapper = styled.div`
   box-sizing: border-box;
-  max-width: 1024px;
+  max-width: 1280px;
   margin: 32px auto 0 auto;
 `
 

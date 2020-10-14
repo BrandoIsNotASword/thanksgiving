@@ -1,5 +1,5 @@
 module.exports = {
-  pathPrefix: `/summerdeal`,
+  pathPrefix: `/forbes-promo`,
   siteMetadata: {
     title: `Ana y José Tulum`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
@@ -34,7 +34,7 @@ module.exports = {
       options: {
         path: `${__dirname}/src/intl`,
         languages: [`en`, `es`],
-        defaultLanguage: `en`,
+        defaultLanguage: `es`,
         redirect: false,
       },
     },

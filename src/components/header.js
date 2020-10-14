@@ -15,7 +15,7 @@ const LANGS_NAME = {
 const Wrapper = styled.header`
   display: flex;
   box-sizing: border-box;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   height: 110px;
   padding: 0 15px;
@@ -25,7 +25,7 @@ const Wrapper = styled.header`
   }
 `
 
-const LinkLogo = styled.a`
+const Logo = styled.div`
   height: 100px;
 `
 
@@ -50,10 +50,10 @@ const LinkLang = styled.a`
 function Header() {
   return (
     <Wrapper>
-      <LinkLogo href="https://anayjose.com/">
+      <Logo href="https://anayjose.com/">
         <img style={{ height: '100%' }} src={logo} alt="Ana y José Tulum" />
-      </LinkLogo>
-      <LangOptions>
+      </Logo>
+      {/*<LangOptions>
         <IntlContextConsumer>
           {({ languages, language: currentLocale }) =>
             languages.map((language) => (
@@ -67,7 +67,7 @@ function Header() {
             ))
           }
         </IntlContextConsumer>
-      </LangOptions>
+        </LangOptions> */}
     </Wrapper>
   )
 }
