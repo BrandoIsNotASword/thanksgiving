@@ -2,8 +2,23 @@
   "date": "FROM JUNE TO AUGUST",
   "title": "Summer Deal",
   "description": "GET A SPECIAL RATE WITH A 30-MIN COUPLES MASSAGE INCLUDED!",
+  "moreInfo": "Get more info",
   "cta": "Book now",
-  "terms": "Available in reservations from June to August. 3 nights stay minimum.",
+  "terms": "You will be sent to Whatsapp to conclude your purchase.",
   "nextSlide": "Next",
-  "prevSlide": "Prev"
+  "prevSlide": "Prev",
+  "packages": {
+    "diamond": {
+      "name": "DIAMOND AREA",
+      "message": "I want to book DIAMOND AREA package..."
+    },
+    "platinum": {
+      "name": "PLATINUM AREA",
+      "message": "I want to book PLATINUM AREA package..."
+    },
+    "deck": {
+      "name": "DECK AREA",
+      "message": "I want to book DECK AREA package..."
+    }
+  }
 }

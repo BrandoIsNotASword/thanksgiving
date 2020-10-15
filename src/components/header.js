@@ -15,10 +15,11 @@ const LANGS_NAME = {
 const Wrapper = styled.header`
   display: flex;
   box-sizing: border-box;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 110px;
   padding: 0 15px;
+  margin-bottom: 15px;
 
   @media (min-width: ${MIN_WIDTH}) {
     padding: 25px 80px;
@@ -27,6 +28,7 @@ const Wrapper = styled.header`
 
 const Logo = styled.div`
   height: 100px;
+  margin-bottom: 15px;
 `
 
 const LangOptions = styled.div`
@@ -53,13 +55,13 @@ function Header() {
       <Logo href="https://anayjose.com/">
         <img style={{ height: '100%' }} src={logo} alt="Ana y José Tulum" />
       </Logo>
-      {/*<LangOptions>
+      <LangOptions>
         <IntlContextConsumer>
           {({ languages, language: currentLocale }) =>
             languages.map((language) => (
               <LinkLang
                 key={language}
-                color={currentLocale === language ? '#2d9a92' : '#ffffff'}
+                color={currentLocale === language ? '#e98f19' : '#ffffff'}
                 onClick={() => changeLocale(language)}
               >
                 {LANGS_NAME[language]}
@@ -67,7 +69,7 @@ function Header() {
             ))
           }
         </IntlContextConsumer>
-        </LangOptions> */}
+      </LangOptions>
     </Wrapper>
   )
 }

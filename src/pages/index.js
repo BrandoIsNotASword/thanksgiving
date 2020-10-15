@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import { FaWhatsapp } from 'react-icons/fa'
 import { useIntl, IntlContextConsumer } from 'gatsby-plugin-intl'
 import styled from 'styled-components'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 
-import logoPromo from '../images/frase-desk.png'
-import logoPromoMobile from '../images/frase-mobile.png'
-import logoForbes from '../images/logo-forbes.png'
+import logoPromo from '../images/havana-logo.png'
 
 const MIN_WIDTH = '768px'
 
@@ -29,38 +28,8 @@ const LogoPromo = styled.img`
   width: 100%;
   max-width: 700px;
   box-sizing: border-box;
-  display: none;
-  opacity: 0.75;
 
   @media (min-width: 1024px) {
-    display: initial;
-  }
-`
-
-const LogoPromoMobile = styled.img`
-  height: auto;
-  width: 100%;
-  max-width: 300px;
-  box-sizing: border-box;
-  opacity: 0.75;
-  margin-top: 15px;
-
-  @media (min-width: 1024px) {
-    margin-top: 0px;
-    display: none;
-  }
-`
-
-const LogoForbes = styled.img`
-  height: auto;
-  width: 100%;
-  max-width: 150px;
-  box-sizing: border-box;
-  margin-top: 16px;
-  opacity: 0.75;
-
-  @media (min-width: 1024px) {
-    max-width: 240px;
   }
 `
 
@@ -80,16 +49,13 @@ const Hr = styled.div`
 const CTAWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 
   @media (min-width: 1024px) {
     flex-direction: row;
 
-    & > :first-child {
+    & > :not(:last-child) {
       margin-right: 32px;
-    }
-
-    & > :last-child {
-      margin-left: 32px;
     }
   }
 `
@@ -114,9 +80,10 @@ const CTAContent = styled.div`
   box-sizing: border-box;
   color: white;
   text-align: center;
+  margin: 0 auto;
 
   @media (min-width: ${MIN_WIDTH}) {
-    width: 350px;
+    width: 250px;
   }
 `
 
@@ -124,15 +91,38 @@ const P = styled.p`
   margin: 0;
 `
 
-const Button = styled.button`
+const Button = styled.a`
   width: 100%;
   border: none;
   color: white;
   background-color: #e98f19;
   border-radius: 100px;
-  height: 50px;
+  height: 45px;
   font-weight: bold;
-  font-size: 1.5em;
+  font-size: 1.25em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 15px;
+  text-decoration: none;
+  cursor: pointer;
+`
+
+const ButtonOutline = styled.a`
+  opacity: 0.85;
+  width: auto;
+  border: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 100px;
+  height: 45px;
+  padding: 0 1rem;
+  font-weight: bold;
+  font-size: 1.25em;
   margin-top: 15px;
   cursor: pointer;
 `
@@ -205,59 +195,70 @@ function IndexPage() {
       <SEO title="Promoción Forbes" />
       <Wrapper>
         <LogoPromo src={logoPromo} />
-        <LogoPromoMobile src={logoPromoMobile} />
-        <LogoForbes src={logoForbes} />
+        <ButtonOutline>{intl({ id: 'moreInfo' })}</ButtonOutline>
         <Hr />
         <CTAWrapper>
           <CTAContent>
+            <P style={{ fontSize: '1.25rem', opacity: '0.85' }}>
+              {intl({ id: 'packages.diamond.name' })}
+            </P>
             <P
-              style={{ fontSize: '6rem', fontWeight: 'bold', opacity: '0.85', lineHeight: '80px' }}
+              style={{ fontSize: '3rem', fontWeight: 'bold', opacity: '0.85', lineHeight: '80px' }}
             >
-              40%
+              $4450
             </P>
-            <P style={{ fontSize: '1.5rem', fontWeight: 'bold', opacity: '0.85' }}>DE DESCUENTO</P>
-            <P style={{ fontSize: '1.25rem', opacity: '0.85', marginTop: '10px' }}>
-              VIAJANDO DEL 1 DE SEPTIEMBRE AL 20 DE DICIEMBRE
-            </P>
-            <Button onClick={() => onOpenModal('promotion/FORBES40/', '2020-09-01')}>
+            <Button
+              href={`https://api.whatsapp.com/send?phone=5219981567985&text=${intl({
+                id: 'packages.diamond.message',
+              })}`}
+              target="_blank"
+            >
               {intl({ id: 'cta' })}
+              <FaWhatsapp size="1.5rem" style={{ marginLeft: '0.5rem' }} />
             </Button>
-            <P
-              style={{
-                fontSize: '0.85rem',
-                marginTop: '5px',
-              }}
-            >
-              EXCEPTO: DEL 26 AL 30 DE NOVIEMBRE
-            </P>
           </CTAContent>
           <CTAHr />
           <CTAContent>
+            <P style={{ fontSize: '1.25rem', opacity: '0.85' }}>
+              {intl({ id: 'packages.platinum.name' })}
+            </P>
             <P
-              style={{ fontSize: '6rem', fontWeight: 'bold', opacity: '0.85', lineHeight: '80px' }}
+              style={{ fontSize: '3rem', fontWeight: 'bold', opacity: '0.85', lineHeight: '80px' }}
             >
-              15%
+              $3850
             </P>
-            <P style={{ fontSize: '1.5rem', fontWeight: 'bold', opacity: '0.85' }}>DE DESCUENTO</P>
-            <P style={{ fontSize: '1.25rem', opacity: '0.85', marginTop: '10px' }}>
-              VIAJANDO DEL 16 DE ENERO AL 1 DE SEPTIEMBRE
-            </P>
-            <Button onClick={() => onOpenModal('promotion/FORBES2/', '2021-01-16')}>
+            <Button
+              href={`https://api.whatsapp.com/send?phone=5219981567985&text=${intl({
+                id: 'packages.platinum.message',
+              })}`}
+              target="_blank"
+            >
               {intl({ id: 'cta' })}
+              <FaWhatsapp size="1.5rem" style={{ marginLeft: '0.5rem' }} />
             </Button>
-            <P
-              style={{
-                fontSize: '0.85rem',
-                marginTop: '5px',
-              }}
-            >
-              EXCEPTO: DEL 26 MARZO AL 11 DE ABRIL
+          </CTAContent>
+          <CTAHr />
+          <CTAContent>
+            <P style={{ fontSize: '1.25rem', opacity: '0.85' }}>
+              {intl({ id: 'packages.deck.name' })}
             </P>
+            <P
+              style={{ fontSize: '3rem', fontWeight: 'bold', opacity: '0.85', lineHeight: '80px' }}
+            >
+              $2950
+            </P>
+            <Button
+              href={`https://api.whatsapp.com/send?phone=5219981567985&text=${intl({
+                id: 'packages.deck.message',
+              })}`}
+              target="_blank"
+            >
+              {intl({ id: 'cta' })}
+              <FaWhatsapp size="1.5rem" style={{ marginLeft: '0.5rem' }} />
+            </Button>
           </CTAContent>
         </CTAWrapper>
-        <Terms style={{ color: 'white', marginTop: '15px' }}>
-          No reembolsable. No aplica con otras promociones. No aplica para grupos o bodas.
-        </Terms>
+        <Terms style={{ color: 'white', marginTop: '15px' }}>{intl({ id: 'terms' })}</Terms>
       </Wrapper>
       {bookOpen && (
         <ModalIframe>
