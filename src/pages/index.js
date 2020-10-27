@@ -124,6 +124,7 @@ const ButtonOutline = styled.a`
   font-weight: bold;
   font-size: 1.25em;
   margin-top: 15px;
+  text-decoration: none;
   cursor: pointer;
 `
 
@@ -192,10 +193,15 @@ function IndexPage() {
 
   return (
     <Layout>
-      <SEO title="Promoción Forbes" />
+      <SEO title="Havana Night" />
       <Wrapper>
         <LogoPromo src={logoPromo} />
-        <ButtonOutline>{intl({ id: 'moreInfo' })}</ButtonOutline>
+        <ButtonOutline
+          href="https://drive.google.com/file/d/1gFqiSrMzjBiQ8bky-I9rnAnGNp3eb67x/view"
+          target="_blank"
+        >
+          {intl({ id: 'moreInfo' })}
+        </ButtonOutline>
         <Hr />
         <CTAWrapper>
           <CTAContent>
@@ -205,7 +211,7 @@ function IndexPage() {
             <P
               style={{ fontSize: '3rem', fontWeight: 'bold', opacity: '0.85', lineHeight: '80px' }}
             >
-              $4450
+              $4550
             </P>
             <Button
               href={`https://api.whatsapp.com/send?phone=5219981567985&text=${intl({

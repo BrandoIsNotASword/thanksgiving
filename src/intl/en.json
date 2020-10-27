@@ -10,15 +10,15 @@
   "packages": {
     "diamond": {
       "name": "DIAMOND AREA",
-      "message": "I want to book DIAMOND AREA package..."
+      "message": "I want to book DIAMOND AREA package for Havana Night in Ana and José......"
     },
     "platinum": {
       "name": "PLATINUM AREA",
-      "message": "I want to book PLATINUM AREA package..."
+      "message": "I want to book PLATINUM AREA package for Havana Night in Ana and José......"
     },
     "deck": {
       "name": "DECK AREA",
-      "message": "I want to book DECK AREA package..."
+      "message": "I want to book DECK AREA package for Havana Night in Ana and José......"
     }
   }
 }

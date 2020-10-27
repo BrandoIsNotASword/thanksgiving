@@ -10,15 +10,15 @@
   "packages": {
     "diamond": {
       "name": "ÁREA DIAMANTE",
-      "message": "Deseo reservar el paquete ÁREA DIAMANTE..."
+      "message": "Deseo reservar el paquete ÁREA DIAMANTE para Havana Night en Ana y José..."
     },
     "platinum": {
       "name": "ÁREA PLATINO",
-      "message": "Deseo reservar el paquete ÁREA PLATINO..."
+      "message": "Deseo reservar el paquete ÁREA PLATINO para Havana Night en Ana y José..."
     },
     "deck": {
       "name": "ÁREA DECK",
-      "message": "Deseo reservar el paquete ÁREA DECK..."
+      "message": "Deseo reservar el paquete ÁREA DECK para Havana Night en Ana y José..."
     }
   }
 }
