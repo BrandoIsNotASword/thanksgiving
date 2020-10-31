@@ -6,14 +6,14 @@ import styled from 'styled-components'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 
-import logoPromo from '../images/havana-logo.png'
+import logoPromo from '../images/logo-promo.png'
 
 const MIN_WIDTH = '768px'
 
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   box-sizing: border-box;
   flex-direction: column;
   flex: 1;
@@ -21,11 +21,12 @@ const Wrapper = styled.div`
   padding-right: 15px;
   margin: 0 auto;
   height: 100%;
+  overflow: hidden;
 `
 
 const LogoPromo = styled.img`
   height: auto;
-  width: 100%;
+  width: 150%;
   max-width: 700px;
   box-sizing: border-box;
 
@@ -93,17 +94,18 @@ const P = styled.p`
 
 const Button = styled.a`
   width: 100%;
+  max-width: 250px;
   border: none;
   color: white;
-  background-color: #e98f19;
+  background-color: #ff202f;
   border-radius: 100px;
-  height: 45px;
+  height: 50px;
   font-weight: bold;
-  font-size: 1.25em;
+  font-size: 2em;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 15px;
+  padding: 5px 25px;
   text-decoration: none;
   cursor: pointer;
 `
@@ -193,78 +195,10 @@ function IndexPage() {
 
   return (
     <Layout>
-      <SEO title="Havana Night" />
+      <SEO title="Thanksgiving Promo" />
       <Wrapper>
         <LogoPromo src={logoPromo} />
-        <ButtonOutline
-          href="https://drive.google.com/file/d/1gFqiSrMzjBiQ8bky-I9rnAnGNp3eb67x/view"
-          target="_blank"
-        >
-          {intl({ id: 'moreInfo' })}
-        </ButtonOutline>
-        <Hr />
-        <CTAWrapper>
-          <CTAContent>
-            <P style={{ fontSize: '1.25rem', opacity: '0.85' }}>
-              {intl({ id: 'packages.diamond.name' })}
-            </P>
-            <P
-              style={{ fontSize: '3rem', fontWeight: 'bold', opacity: '0.85', lineHeight: '80px' }}
-            >
-              $4550
-            </P>
-            <Button
-              href={`https://api.whatsapp.com/send?phone=5219981567985&text=${intl({
-                id: 'packages.diamond.message',
-              })}`}
-              target="_blank"
-            >
-              {intl({ id: 'cta' })}
-              <FaWhatsapp size="1.5rem" style={{ marginLeft: '0.5rem' }} />
-            </Button>
-          </CTAContent>
-          <CTAHr />
-          <CTAContent>
-            <P style={{ fontSize: '1.25rem', opacity: '0.85' }}>
-              {intl({ id: 'packages.platinum.name' })}
-            </P>
-            <P
-              style={{ fontSize: '3rem', fontWeight: 'bold', opacity: '0.85', lineHeight: '80px' }}
-            >
-              $3850
-            </P>
-            <Button
-              href={`https://api.whatsapp.com/send?phone=5219981567985&text=${intl({
-                id: 'packages.platinum.message',
-              })}`}
-              target="_blank"
-            >
-              {intl({ id: 'cta' })}
-              <FaWhatsapp size="1.5rem" style={{ marginLeft: '0.5rem' }} />
-            </Button>
-          </CTAContent>
-          <CTAHr />
-          <CTAContent>
-            <P style={{ fontSize: '1.25rem', opacity: '0.85' }}>
-              {intl({ id: 'packages.deck.name' })}
-            </P>
-            <P
-              style={{ fontSize: '3rem', fontWeight: 'bold', opacity: '0.85', lineHeight: '80px' }}
-            >
-              $2950
-            </P>
-            <Button
-              href={`https://api.whatsapp.com/send?phone=5219981567985&text=${intl({
-                id: 'packages.deck.message',
-              })}`}
-              target="_blank"
-            >
-              {intl({ id: 'cta' })}
-              <FaWhatsapp size="1.5rem" style={{ marginLeft: '0.5rem' }} />
-            </Button>
-          </CTAContent>
-        </CTAWrapper>
-        <Terms style={{ color: 'white', marginTop: '15px' }}>{intl({ id: 'terms' })}</Terms>
+        <Button onClick={() => onOpenModal()}>{intl({ id: 'cta' })}</Button>
       </Wrapper>
       {bookOpen && (
         <ModalIframe>

@@ -1,7 +1,7 @@
 module.exports = {
-  pathPrefix: `/newyear`,
+  pathPrefix: `/thanksgiving`,
   siteMetadata: {
-    title: `New Year's Party`,
+    title: `Ana y José`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
   },
